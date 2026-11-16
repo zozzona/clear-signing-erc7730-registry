@@ -1,0 +1,300 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "$id": "SDLPool",
+    "contract": {
+      "deployments": [
+        {
+          "chainId": 1,
+          "address": "0x0B2eF910ad0b34bf575Eb09d37fd7DA6c148CA4d"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "owner": "stake.link",
+    "info": {
+      "url": "https://stake.link"
+    },
+    "enums": {
+      "approval": {
+        "true": "Allow all",
+        "false": "Revoke all"
+      }
+    },
+    "constants": {
+      "sdl": "0xA95C5ebB86E0dE73B4fB8c47A45B792CFeA28C23"
+    },
+    "contractName": "SDLPool"
+  },
+  "display": {
+    "formats": {
+      "initiateUnlock(uint256 _lockId)": {
+        "intent": "Start reSDL unlock, end boost",
+        "fields": [
+          {
+            "path": "#._lockId",
+            "label": "Position ID",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "withdraw(uint256 _lockId, uint256 _amount)": {
+        "intent": "Withdraw SDL from reSDL",
+        "interpolatedIntent": "Withdraw {_amount} from reSDL {_lockId}",
+        "fields": [
+          {
+            "path": "#._lockId",
+            "label": "Position ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#._amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "token": "$.metadata.constants.sdl"
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "extendLockDuration(uint256 _lockId, uint64 _lockingDuration)": {
+        "intent": "Extend reSDL lock",
+        "fields": [
+          {
+            "path": "#._lockId",
+            "label": "Position ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#._lockingDuration",
+            "label": "New lock duration",
+            "format": "duration",
+            "visible": "always"
+          }
+        ]
+      },
+      "withdrawRewards(address[] _tokens)": {
+        "intent": "Claim reSDL rewards",
+        "fields": [
+          {
+            "path": "#._tokens.[]",
+            "label": "Reward token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "transferFrom(address _from, address _to, uint256 _lockId)": {
+        "intent": "Transfer reSDL position",
+        "fields": [
+          {
+            "path": "#._from",
+            "label": "From",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._to",
+            "label": "To",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._lockId",
+            "label": "Position ID",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "safeTransferFrom(address _from, address _to, uint256 _lockId)": {
+        "intent": "Transfer reSDL position",
+        "fields": [
+          {
+            "path": "#._from",
+            "label": "From",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._to",
+            "label": "To",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._lockId",
+            "label": "Position ID",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "safeTransferFrom(address _from, address _to, uint256 _lockId, bytes _data)": {
+        "intent": "Transfer reSDL position",
+        "fields": [
+          {
+            "path": "#._from",
+            "label": "From",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._to",
+            "label": "To",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._lockId",
+            "label": "Position ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#._data",
+            "label": "Data",
+            "visible": "never"
+          }
+        ]
+      },
+      "approve(address _to, uint256 _lockId)": {
+        "intent": "Approve reSDL transfer",
+        "fields": [
+          {
+            "path": "#._to",
+            "label": "Spender",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract",
+                "eoa"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._lockId",
+            "label": "Position ID",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "setApprovalForAll(address _operator, bool _approved)": {
+        "intent": "Manage all reSDL positions",
+        "fields": [
+          {
+            "path": "#._operator",
+            "label": "Operator",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract",
+                "eoa"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._approved",
+            "label": "Access",
+            "format": "enum",
+            "params": {
+              "$ref": "$.metadata.enums.approval"
+            },
+            "visible": "always"
+          }
+        ]
+      }
+    }
+  }
+}

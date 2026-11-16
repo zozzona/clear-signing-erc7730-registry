@@ -1,0 +1,189 @@
+{
+  "$schema": "../../../specs/erc7730-tests-v2.schema.json",
+  "descriptor": "../calldata-wstESP.json",
+  "dataProvider": {
+    "tokens": {
+      "0x5273a75694311a6c4f2acf5c5b8566d965cb6e50": {
+        "symbol": "stESP",
+        "decimals": 18,
+        "name": "Staked ESP"
+      },
+      "0x43ff5ffab0973815ef8672f71c49ee5e53f30a48": {
+        "symbol": "wstESP",
+        "decimals": 18,
+        "name": "Wrapped stESP"
+      }
+    }
+  },
+  "tests": [
+    {
+      "description": "Wrap 10 stESP",
+      "rawTx": "0x02f84d0107843b9aca008506fc23ac0083061a809443ff5ffab0973815ef8672f71c49ee5e53f30a4880a4ea598cb00000000000000000000000000000000000000000000000008ac7230489e80000c0",
+      "expected": {
+        "intent": "Wrap stESP",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "10 stESP"
+          }
+        ],
+        "interpolatedIntent": "Wrap 10 stESP"
+      }
+    },
+    {
+      "description": "Unwrap 8 wstESP",
+      "rawTx": "0x02f84d0107843b9aca008506fc23ac0083061a809443ff5ffab0973815ef8672f71c49ee5e53f30a4880a4de0e9a3e0000000000000000000000000000000000000000000000006f05b59d3b200000c0",
+      "expected": {
+        "intent": "Unwrap wstESP to stESP",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "8 wstESP"
+          }
+        ],
+        "interpolatedIntent": "Unwrap 8 wstESP"
+      }
+    },
+    {
+      "description": "Send 3 wstESP and call a contract",
+      "rawTx": "0x02f8ae0107843b9aca008506fc23ac0083061a809443ff5ffab0973815ef8672f71c49ee5e53f30a4880b8844000aea000000000000000000000000020c0b7b370c97ed139aea464205c05fceaf4ac6800000000000000000000000000000000000000000000000029a2241af62c000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000c0",
+      "expected": {
+        "intent": "Send wstESP and call contract",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "3 wstESP"
+          },
+          {
+            "label": "To",
+            "value": "0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+          },
+          {
+            "label": "Data",
+            "value": "0x"
+          }
+        ],
+        "interpolatedIntent": "Send 3 wstESP and call 0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+      }
+    },
+    {
+      "description": "Send 5 wstESP",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a809443ff5ffab0973815ef8672f71c49ee5e53f30a4880b844a9059cbb00000000000000000000000020c0b7b370c97ed139aea464205c05fceaf4ac680000000000000000000000000000000000000000000000004563918244f40000c0",
+      "expected": {
+        "intent": "Send wstESP",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "5 wstESP"
+          },
+          {
+            "label": "To",
+            "value": "0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+          }
+        ],
+        "interpolatedIntent": "Send 5 wstESP to 0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+      }
+    },
+    {
+      "description": "Approve 100 wstESP",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a809443ff5ffab0973815ef8672f71c49ee5e53f30a4880b844095ea7b3000000000000000000000000dc26867b7d0f599bd2def704468a8cf073375fd30000000000000000000000000000000000000000000000056bc75e2d63100000c0",
+      "expected": {
+        "intent": "Approve wstESP spending",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Spender",
+            "value": "0xdC26867B7d0F599BD2DeF704468a8cF073375FD3"
+          },
+          {
+            "label": "Amount",
+            "value": "100 wstESP"
+          }
+        ],
+        "interpolatedIntent": "Allow 0xdC26867B7d0F599BD2DeF704468a8cF073375FD3 to spend 100 wstESP"
+      }
+    },
+    {
+      "description": "Approve unlimited wstESP",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a809443ff5ffab0973815ef8672f71c49ee5e53f30a4880b844095ea7b3000000000000000000000000dc26867b7d0f599bd2def704468a8cf073375fd3ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc0",
+      "expected": {
+        "intent": "Approve wstESP spending",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Spender",
+            "value": "0xdC26867B7d0F599BD2DeF704468a8cF073375FD3"
+          },
+          {
+            "label": "Amount",
+            "value": "Unlimited wstESP"
+          }
+        ],
+        "interpolatedIntent": "Allow 0xdC26867B7d0F599BD2DeF704468a8cF073375FD3 to spend Unlimited wstESP"
+      }
+    },
+    {
+      "description": "Increase wstESP allowance by 7",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a809443ff5ffab0973815ef8672f71c49ee5e53f30a4880b84439509351000000000000000000000000dc26867b7d0f599bd2def704468a8cf073375fd30000000000000000000000000000000000000000000000006124fee993bc0000c0",
+      "expected": {
+        "intent": "Increase wstESP allowance",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Spender",
+            "value": "0xdC26867B7d0F599BD2DeF704468a8cF073375FD3"
+          },
+          {
+            "label": "Amount",
+            "value": "7 wstESP"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Decrease wstESP allowance by 3",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a809443ff5ffab0973815ef8672f71c49ee5e53f30a4880b844a457c2d7000000000000000000000000dc26867b7d0f599bd2def704468a8cf073375fd300000000000000000000000000000000000000000000000029a2241af62c0000c0",
+      "expected": {
+        "intent": "Decrease wstESP allowance",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Spender",
+            "value": "0xdC26867B7d0F599BD2DeF704468a8cF073375FD3"
+          },
+          {
+            "label": "Amount",
+            "value": "3 wstESP"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Send 4 wstESP from account",
+      "rawTx": "0x02f88e0107843b9aca008506fc23ac0083061a809443ff5ffab0973815ef8672f71c49ee5e53f30a4880b86423b872dd000000000000000000000000dc26867b7d0f599bd2def704468a8cf073375fd300000000000000000000000020c0b7b370c97ed139aea464205c05fceaf4ac680000000000000000000000000000000000000000000000003782dace9d900000c0",
+      "expected": {
+        "intent": "Send wstESP from account",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "From",
+            "value": "0xdC26867B7d0F599BD2DeF704468a8cF073375FD3"
+          },
+          {
+            "label": "To",
+            "value": "0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+          },
+          {
+            "label": "Amount",
+            "value": "4 wstESP"
+          }
+        ],
+        "interpolatedIntent": "Send 4 wstESP from 0xdC26867B7d0F599BD2DeF704468a8cF073375FD3 to 0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+      }
+    }
+  ]
+}

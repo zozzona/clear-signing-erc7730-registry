@@ -1,0 +1,167 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "$id": "ESPPriorityPool",
+    "contract": {
+      "deployments": [
+        {
+          "chainId": 1,
+          "address": "0xdC26867B7d0F599BD2DeF704468a8cF073375FD3"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "owner": "stake.link",
+    "info": {
+      "url": "https://stake.link"
+    },
+    "enums": {
+      "yesNo": {
+        "true": "Yes",
+        "false": "No"
+      }
+    },
+    "constants": {
+      "asset": "0x031De51F3E8016514Bd0963d0B2AB825A591Db9A",
+      "lst": "0x5273a75694311A6c4F2AcF5C5B8566D965cb6e50"
+    },
+    "contractName": "PriorityPool"
+  },
+  "display": {
+    "formats": {
+      "deposit(uint256 _amount, bool _shouldQueue, bytes[] _data)": {
+        "intent": "Stake ESP",
+        "interpolatedIntent": "Stake {_amount}",
+        "fields": [
+          {
+            "path": "#._amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "token": "$.metadata.constants.asset"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._shouldQueue",
+            "label": "Queue if pool is full",
+            "format": "enum",
+            "params": {
+              "$ref": "$.metadata.enums.yesNo"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._data.[]",
+            "label": "Strategy data",
+            "visible": "never"
+          }
+        ]
+      },
+      "withdraw(uint256 _amountToWithdraw, uint256 _amount, uint256 _sharesAmount, bytes32[] _merkleProof, bool _shouldUnqueue, bool _shouldQueueWithdrawal, bytes[] _data)": {
+        "intent": "Withdraw ESP",
+        "interpolatedIntent": "Withdraw {_amountToWithdraw}",
+        "fields": [
+          {
+            "path": "#._amountToWithdraw",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "token": "$.metadata.constants.asset"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._shouldUnqueue",
+            "label": "Use queued ESP first",
+            "format": "enum",
+            "params": {
+              "$ref": "$.metadata.enums.yesNo"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._shouldQueueWithdrawal",
+            "label": "Queue if not instant",
+            "format": "enum",
+            "params": {
+              "$ref": "$.metadata.enums.yesNo"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._amount",
+            "label": "Distribution amount",
+            "visible": "never"
+          },
+          {
+            "path": "#._sharesAmount",
+            "label": "Distribution shares",
+            "visible": "never"
+          },
+          {
+            "path": "#._merkleProof.[]",
+            "label": "Merkle proof",
+            "visible": "never"
+          },
+          {
+            "path": "#._data.[]",
+            "label": "Strategy data",
+            "visible": "never"
+          }
+        ]
+      },
+      "unqueueTokens(uint256 _amountToUnqueue, uint256 _amount, uint256 _sharesAmount, bytes32[] _merkleProof)": {
+        "intent": "Withdraw queued ESP",
+        "interpolatedIntent": "Withdraw {_amountToUnqueue} from the queue",
+        "fields": [
+          {
+            "path": "#._amountToUnqueue",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "token": "$.metadata.constants.asset"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._amount",
+            "label": "Distribution amount",
+            "visible": "never"
+          },
+          {
+            "path": "#._sharesAmount",
+            "label": "Distribution shares",
+            "visible": "never"
+          },
+          {
+            "path": "#._merkleProof.[]",
+            "label": "Merkle proof",
+            "visible": "never"
+          }
+        ]
+      },
+      "claimLSDTokens(uint256 _amount, uint256 _sharesAmount, bytes32[] _merkleProof)": {
+        "intent": "Claim stESP from queue",
+        "fields": [
+          {
+            "path": "#._amount",
+            "label": "Distribution amount",
+            "visible": "never"
+          },
+          {
+            "path": "#._sharesAmount",
+            "label": "Distribution shares",
+            "visible": "never"
+          },
+          {
+            "path": "#._merkleProof.[]",
+            "label": "Merkle proof",
+            "visible": "never"
+          }
+        ]
+      }
+    }
+  }
+}

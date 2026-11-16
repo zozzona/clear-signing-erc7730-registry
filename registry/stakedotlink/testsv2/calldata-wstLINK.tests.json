@@ -1,0 +1,189 @@
+{
+  "$schema": "../../../specs/erc7730-tests-v2.schema.json",
+  "descriptor": "../calldata-wstLINK.json",
+  "dataProvider": {
+    "tokens": {
+      "0xb8b295df2cd735b15be5eb419517aa626fc43cd5": {
+        "symbol": "stLINK",
+        "decimals": 18,
+        "name": "Staked LINK"
+      },
+      "0x911d86c72155c33993d594b0ec7e6206b4c803da": {
+        "symbol": "wstLINK",
+        "decimals": 18,
+        "name": "Wrapped stLINK"
+      }
+    }
+  },
+  "tests": [
+    {
+      "description": "Wrap 10 stLINK",
+      "rawTx": "0x02f84d0107843b9aca008506fc23ac0083061a8094911d86c72155c33993d594b0ec7e6206b4c803da80a4ea598cb00000000000000000000000000000000000000000000000008ac7230489e80000c0",
+      "expected": {
+        "intent": "Wrap stLINK",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "10 stLINK"
+          }
+        ],
+        "interpolatedIntent": "Wrap 10 stLINK"
+      }
+    },
+    {
+      "description": "Unwrap 8 wstLINK",
+      "rawTx": "0x02f84d0107843b9aca008506fc23ac0083061a8094911d86c72155c33993d594b0ec7e6206b4c803da80a4de0e9a3e0000000000000000000000000000000000000000000000006f05b59d3b200000c0",
+      "expected": {
+        "intent": "Unwrap wstLINK to stLINK",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "8 wstLINK"
+          }
+        ],
+        "interpolatedIntent": "Unwrap 8 wstLINK"
+      }
+    },
+    {
+      "description": "Send 3 wstLINK and call a contract",
+      "rawTx": "0x02f8ae0107843b9aca008506fc23ac0083061a8094911d86c72155c33993d594b0ec7e6206b4c803da80b8844000aea000000000000000000000000020c0b7b370c97ed139aea464205c05fceaf4ac6800000000000000000000000000000000000000000000000029a2241af62c000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000c0",
+      "expected": {
+        "intent": "Send wstLINK and call contract",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "3 wstLINK"
+          },
+          {
+            "label": "To",
+            "value": "0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+          },
+          {
+            "label": "Data",
+            "value": "0x"
+          }
+        ],
+        "interpolatedIntent": "Send 3 wstLINK and call 0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+      }
+    },
+    {
+      "description": "Send 5 wstLINK",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a8094911d86c72155c33993d594b0ec7e6206b4c803da80b844a9059cbb00000000000000000000000020c0b7b370c97ed139aea464205c05fceaf4ac680000000000000000000000000000000000000000000000004563918244f40000c0",
+      "expected": {
+        "intent": "Send wstLINK",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "5 wstLINK"
+          },
+          {
+            "label": "To",
+            "value": "0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+          }
+        ],
+        "interpolatedIntent": "Send 5 wstLINK to 0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+      }
+    },
+    {
+      "description": "Approve 100 wstLINK",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a8094911d86c72155c33993d594b0ec7e6206b4c803da80b844095ea7b3000000000000000000000000ddc796a66e8b83d0bccd97df33a6ccfba8fd60ea0000000000000000000000000000000000000000000000056bc75e2d63100000c0",
+      "expected": {
+        "intent": "Approve wstLINK spending",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Spender",
+            "value": "0xDdC796a66E8b83d0BcCD97dF33A6CcFBA8fd60eA"
+          },
+          {
+            "label": "Amount",
+            "value": "100 wstLINK"
+          }
+        ],
+        "interpolatedIntent": "Allow 0xDdC796a66E8b83d0BcCD97dF33A6CcFBA8fd60eA to spend 100 wstLINK"
+      }
+    },
+    {
+      "description": "Approve unlimited wstLINK",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a8094911d86c72155c33993d594b0ec7e6206b4c803da80b844095ea7b3000000000000000000000000ddc796a66e8b83d0bccd97df33a6ccfba8fd60eaffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc0",
+      "expected": {
+        "intent": "Approve wstLINK spending",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Spender",
+            "value": "0xDdC796a66E8b83d0BcCD97dF33A6CcFBA8fd60eA"
+          },
+          {
+            "label": "Amount",
+            "value": "Unlimited wstLINK"
+          }
+        ],
+        "interpolatedIntent": "Allow 0xDdC796a66E8b83d0BcCD97dF33A6CcFBA8fd60eA to spend Unlimited wstLINK"
+      }
+    },
+    {
+      "description": "Increase wstLINK allowance by 7",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a8094911d86c72155c33993d594b0ec7e6206b4c803da80b84439509351000000000000000000000000ddc796a66e8b83d0bccd97df33a6ccfba8fd60ea0000000000000000000000000000000000000000000000006124fee993bc0000c0",
+      "expected": {
+        "intent": "Increase wstLINK allowance",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Spender",
+            "value": "0xDdC796a66E8b83d0BcCD97dF33A6CcFBA8fd60eA"
+          },
+          {
+            "label": "Amount",
+            "value": "7 wstLINK"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Decrease wstLINK allowance by 3",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a8094911d86c72155c33993d594b0ec7e6206b4c803da80b844a457c2d7000000000000000000000000ddc796a66e8b83d0bccd97df33a6ccfba8fd60ea00000000000000000000000000000000000000000000000029a2241af62c0000c0",
+      "expected": {
+        "intent": "Decrease wstLINK allowance",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Spender",
+            "value": "0xDdC796a66E8b83d0BcCD97dF33A6CcFBA8fd60eA"
+          },
+          {
+            "label": "Amount",
+            "value": "3 wstLINK"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Send 4 wstLINK from account",
+      "rawTx": "0x02f88e0107843b9aca008506fc23ac0083061a8094911d86c72155c33993d594b0ec7e6206b4c803da80b86423b872dd000000000000000000000000ddc796a66e8b83d0bccd97df33a6ccfba8fd60ea00000000000000000000000020c0b7b370c97ed139aea464205c05fceaf4ac680000000000000000000000000000000000000000000000003782dace9d900000c0",
+      "expected": {
+        "intent": "Send wstLINK from account",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "From",
+            "value": "0xDdC796a66E8b83d0BcCD97dF33A6CcFBA8fd60eA"
+          },
+          {
+            "label": "To",
+            "value": "0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+          },
+          {
+            "label": "Amount",
+            "value": "4 wstLINK"
+          }
+        ],
+        "interpolatedIntent": "Send 4 wstLINK from 0xDdC796a66E8b83d0BcCD97dF33A6CcFBA8fd60eA to 0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+      }
+    }
+  ]
+}

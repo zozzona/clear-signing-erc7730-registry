@@ -1,0 +1,187 @@
+{
+  "$schema": "../../../specs/erc7730-tests-v2.schema.json",
+  "descriptor": "../calldata-SDLPool.json",
+  "dataProvider": {
+    "tokens": {
+      "0xa95c5ebb86e0de73b4fb8c47a45b792cfea28c23": {
+        "symbol": "SDL",
+        "decimals": 18,
+        "name": "stake.link"
+      },
+      "0xb8b295df2cd735b15be5eb419517aa626fc43cd5": {
+        "symbol": "stLINK",
+        "decimals": 18,
+        "name": "Staked LINK"
+      }
+    }
+  },
+  "tests": [
+    {
+      "description": "Start the unlock of position 1234",
+      "rawTx": "0x02f84d0107843b9aca008506fc23ac0083061a80940b2ef910ad0b34bf575eb09d37fd7da6c148ca4d80a42dc075e100000000000000000000000000000000000000000000000000000000000004d2c0",
+      "expected": {
+        "intent": "Start reSDL unlock, end boost",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Position ID",
+            "value": "1234"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Withdraw 300 SDL from position 1234",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a80940b2ef910ad0b34bf575eb09d37fd7da6c148ca4d80b844441a3e7000000000000000000000000000000000000000000000000000000000000004d200000000000000000000000000000000000000000000001043561a8829300000c0",
+      "expected": {
+        "intent": "Withdraw SDL from reSDL",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Position ID",
+            "value": "1234"
+          },
+          {
+            "label": "Amount",
+            "value": "300 SDL"
+          }
+        ],
+        "interpolatedIntent": "Withdraw 300 SDL from reSDL 1234"
+      }
+    },
+    {
+      "description": "Extend position 1234 to 2 years",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a80940b2ef910ad0b34bf575eb09d37fd7da6c148ca4d80b844e231db7600000000000000000000000000000000000000000000000000000000000004d20000000000000000000000000000000000000000000000000000000003c26700c0",
+      "expected": {
+        "intent": "Extend reSDL lock",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Position ID",
+            "value": "1234"
+          },
+          {
+            "label": "New lock duration",
+            "value": "17520:00:00"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Claim stLINK rewards",
+      "rawTx": "0x02f88e0107843b9aca008506fc23ac0083061a80940b2ef910ad0b34bf575eb09d37fd7da6c148ca4d80b86462d76d0600000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000001000000000000000000000000b8b295df2cd735b15be5eb419517aa626fc43cd5c0",
+      "expected": {
+        "intent": "Claim reSDL rewards",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Reward token",
+            "value": "0xb8b295df2cd735b15BE5Eb419517Aa626fc43cD5"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Transfer position 1234 (transferFrom)",
+      "rawTx": "0x02f88e0107843b9aca008506fc23ac0083061a80940b2ef910ad0b34bf575eb09d37fd7da6c148ca4d80b86423b872dd00000000000000000000000020c0b7b370c97ed139aea464205c05fceaf4ac680000000000000000000000000b2ef910ad0b34bf575eb09d37fd7da6c148ca4d00000000000000000000000000000000000000000000000000000000000004d2c0",
+      "expected": {
+        "intent": "Transfer reSDL position",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "From",
+            "value": "0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+          },
+          {
+            "label": "To",
+            "value": "0x0B2eF910ad0b34bf575Eb09d37fd7DA6c148CA4d"
+          },
+          {
+            "label": "Position ID",
+            "value": "1234"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Transfer position 1234 (safeTransferFrom)",
+      "rawTx": "0x02f88e0107843b9aca008506fc23ac0083061a80940b2ef910ad0b34bf575eb09d37fd7da6c148ca4d80b86442842e0e00000000000000000000000020c0b7b370c97ed139aea464205c05fceaf4ac680000000000000000000000000b2ef910ad0b34bf575eb09d37fd7da6c148ca4d00000000000000000000000000000000000000000000000000000000000004d2c0",
+      "expected": {
+        "intent": "Transfer reSDL position",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "From",
+            "value": "0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+          },
+          {
+            "label": "To",
+            "value": "0x0B2eF910ad0b34bf575Eb09d37fd7DA6c148CA4d"
+          },
+          {
+            "label": "Position ID",
+            "value": "1234"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Transfer position 1234 with data",
+      "rawTx": "0x02f8ce0107843b9aca008506fc23ac0083061a80940b2ef910ad0b34bf575eb09d37fd7da6c148ca4d80b8a4b88d4fde00000000000000000000000020c0b7b370c97ed139aea464205c05fceaf4ac680000000000000000000000000b2ef910ad0b34bf575eb09d37fd7da6c148ca4d00000000000000000000000000000000000000000000000000000000000004d200000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000c0",
+      "expected": {
+        "intent": "Transfer reSDL position",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "From",
+            "value": "0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+          },
+          {
+            "label": "To",
+            "value": "0x0B2eF910ad0b34bf575Eb09d37fd7DA6c148CA4d"
+          },
+          {
+            "label": "Position ID",
+            "value": "1234"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Approve a transfer of position 1234",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a80940b2ef910ad0b34bf575eb09d37fd7da6c148ca4d80b844095ea7b300000000000000000000000020c0b7b370c97ed139aea464205c05fceaf4ac6800000000000000000000000000000000000000000000000000000000000004d2c0",
+      "expected": {
+        "intent": "Approve reSDL transfer",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Spender",
+            "value": "0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+          },
+          {
+            "label": "Position ID",
+            "value": "1234"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Allow an operator for all positions",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a80940b2ef910ad0b34bf575eb09d37fd7da6c148ca4d80b844a22cb46500000000000000000000000020c0b7b370c97ed139aea464205c05fceaf4ac680000000000000000000000000000000000000000000000000000000000000001c0",
+      "expected": {
+        "intent": "Manage all reSDL positions",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Operator",
+            "value": "0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+          },
+          {
+            "label": "Access",
+            "value": "Allow all"
+          }
+        ]
+      }
+    }
+  ]
+}

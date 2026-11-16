@@ -1,0 +1,294 @@
+{
+  "$schema": "../../../specs/erc7730-tests-v2.schema.json",
+  "descriptor": "../calldata-StakingPool.json",
+  "dataProvider": {
+    "tokens": {
+      "0xb8b295df2cd735b15be5eb419517aa626fc43cd5": {
+        "symbol": "stLINK",
+        "decimals": 18,
+        "name": "Staked LINK"
+      },
+      "0x2ff4390db61f282ef4e6d4612c776b809a541753": {
+        "symbol": "stPOL",
+        "decimals": 18,
+        "name": "Staked POL"
+      },
+      "0x5273a75694311a6c4f2acf5c5b8566d965cb6e50": {
+        "symbol": "stESP",
+        "decimals": 18,
+        "name": "Staked ESP"
+      }
+    }
+  },
+  "tests": [
+    {
+      "description": "Wrap 10 stLINK into wstLINK (transferAndCall)",
+      "rawTx": "0x02f8ae0107843b9aca008506fc23ac0083061a8094b8b295df2cd735b15be5eb419517aa626fc43cd580b8844000aea0000000000000000000000000911d86c72155c33993d594b0ec7e6206b4c803da0000000000000000000000000000000000000000000000008ac7230489e8000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000c0",
+      "expected": {
+        "intent": "Send and call contract",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "10 stLINK"
+          },
+          {
+            "label": "To",
+            "value": "0x911D86C72155c33993d594B0Ec7E6206B4C803da"
+          },
+          {
+            "label": "Data",
+            "value": "0x"
+          }
+        ],
+        "interpolatedIntent": "Send 10 stLINK and call 0x911D86C72155c33993d594B0Ec7E6206B4C803da"
+      }
+    },
+    {
+      "description": "Withdraw 25 stLINK through the Priority Pool (transferAndCall)",
+      "rawTx": "0x02f9010e0107843b9aca008506fc23ac0083061a8094b8b295df2cd735b15be5eb419517aa626fc43cd580b8e44000aea0000000000000000000000000ddc796a66e8b83d0bccd97df33a6ccfba8fd60ea0000000000000000000000000000000000000000000000015af1d78b58c4000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000060000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000c0",
+      "expected": {
+        "intent": "Send and call contract",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "25 stLINK"
+          },
+          {
+            "label": "To",
+            "value": "0xDdC796a66E8b83d0BcCD97dF33A6CcFBA8fd60eA"
+          },
+          {
+            "label": "Data",
+            "value": "0x000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000"
+          }
+        ],
+        "interpolatedIntent": "Send 25 stLINK and call 0xDdC796a66E8b83d0BcCD97dF33A6CcFBA8fd60eA"
+      }
+    },
+    {
+      "description": "Wrap 10 stPOL into wstPOL (transferAndCall)",
+      "rawTx": "0x02f8ae0107843b9aca008506fc23ac0083061a80942ff4390db61f282ef4e6d4612c776b809a54175380b8844000aea00000000000000000000000002091d83592d79b4de5fd2ce3d98679c32a9555e60000000000000000000000000000000000000000000000008ac7230489e8000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000c0",
+      "expected": {
+        "intent": "Send and call contract",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "10 stPOL"
+          },
+          {
+            "label": "To",
+            "value": "0x2091d83592D79B4De5fD2ce3D98679c32A9555e6"
+          },
+          {
+            "label": "Data",
+            "value": "0x"
+          }
+        ],
+        "interpolatedIntent": "Send 10 stPOL and call 0x2091d83592D79B4De5fD2ce3D98679c32A9555e6"
+      }
+    },
+    {
+      "description": "Withdraw 25 stPOL through the Priority Pool (transferAndCall)",
+      "rawTx": "0x02f9010e0107843b9aca008506fc23ac0083061a80942ff4390db61f282ef4e6d4612c776b809a54175380b8e44000aea0000000000000000000000000cfa197495cf8e82d7b5df858f55b73208b8b9d670000000000000000000000000000000000000000000000015af1d78b58c4000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000060000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000c0",
+      "expected": {
+        "intent": "Send and call contract",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "25 stPOL"
+          },
+          {
+            "label": "To",
+            "value": "0xCfa197495CF8E82D7B5df858F55B73208B8B9d67"
+          },
+          {
+            "label": "Data",
+            "value": "0x000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000"
+          }
+        ],
+        "interpolatedIntent": "Send 25 stPOL and call 0xCfa197495CF8E82D7B5df858F55B73208B8B9d67"
+      }
+    },
+    {
+      "description": "Wrap 10 stESP into wstESP (transferAndCall)",
+      "rawTx": "0x02f8ae0107843b9aca008506fc23ac0083061a80945273a75694311a6c4f2acf5c5b8566d965cb6e5080b8844000aea000000000000000000000000043ff5ffab0973815ef8672f71c49ee5e53f30a480000000000000000000000000000000000000000000000008ac7230489e8000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000c0",
+      "expected": {
+        "intent": "Send and call contract",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "10 stESP"
+          },
+          {
+            "label": "To",
+            "value": "0x43ff5fFaB0973815EF8672F71c49ee5e53f30a48"
+          },
+          {
+            "label": "Data",
+            "value": "0x"
+          }
+        ],
+        "interpolatedIntent": "Send 10 stESP and call 0x43ff5fFaB0973815EF8672F71c49ee5e53f30a48"
+      }
+    },
+    {
+      "description": "Withdraw 25 stESP through the Priority Pool (transferAndCall)",
+      "rawTx": "0x02f9010e0107843b9aca008506fc23ac0083061a80945273a75694311a6c4f2acf5c5b8566d965cb6e5080b8e44000aea0000000000000000000000000dc26867b7d0f599bd2def704468a8cf073375fd30000000000000000000000000000000000000000000000015af1d78b58c4000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000060000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000c0",
+      "expected": {
+        "intent": "Send and call contract",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "25 stESP"
+          },
+          {
+            "label": "To",
+            "value": "0xdC26867B7d0F599BD2DeF704468a8cF073375FD3"
+          },
+          {
+            "label": "Data",
+            "value": "0x000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000"
+          }
+        ],
+        "interpolatedIntent": "Send 25 stESP and call 0xdC26867B7d0F599BD2DeF704468a8cF073375FD3"
+      }
+    },
+    {
+      "description": "Send 5 stLINK",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a8094b8b295df2cd735b15be5eb419517aa626fc43cd580b844a9059cbb00000000000000000000000020c0b7b370c97ed139aea464205c05fceaf4ac680000000000000000000000000000000000000000000000004563918244f40000c0",
+      "expected": {
+        "intent": "Send staked tokens",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "5 stLINK"
+          },
+          {
+            "label": "To",
+            "value": "0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+          }
+        ],
+        "interpolatedIntent": "Send 5 stLINK to 0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+      }
+    },
+    {
+      "description": "Approve 100 stLINK",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a8094b8b295df2cd735b15be5eb419517aa626fc43cd580b844095ea7b3000000000000000000000000ddc796a66e8b83d0bccd97df33a6ccfba8fd60ea0000000000000000000000000000000000000000000000056bc75e2d63100000c0",
+      "expected": {
+        "intent": "Approve spending",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Spender",
+            "value": "0xDdC796a66E8b83d0BcCD97dF33A6CcFBA8fd60eA"
+          },
+          {
+            "label": "Amount",
+            "value": "100 stLINK"
+          }
+        ],
+        "interpolatedIntent": "Allow 0xDdC796a66E8b83d0BcCD97dF33A6CcFBA8fd60eA to spend 100 stLINK"
+      }
+    },
+    {
+      "description": "Approve unlimited stLINK",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a8094b8b295df2cd735b15be5eb419517aa626fc43cd580b844095ea7b3000000000000000000000000ddc796a66e8b83d0bccd97df33a6ccfba8fd60eaffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc0",
+      "expected": {
+        "intent": "Approve spending",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Spender",
+            "value": "0xDdC796a66E8b83d0BcCD97dF33A6CcFBA8fd60eA"
+          },
+          {
+            "label": "Amount",
+            "value": "Unlimited stLINK"
+          }
+        ],
+        "interpolatedIntent": "Allow 0xDdC796a66E8b83d0BcCD97dF33A6CcFBA8fd60eA to spend Unlimited stLINK"
+      }
+    },
+    {
+      "description": "Increase stLINK allowance by 7",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a8094b8b295df2cd735b15be5eb419517aa626fc43cd580b84439509351000000000000000000000000ddc796a66e8b83d0bccd97df33a6ccfba8fd60ea0000000000000000000000000000000000000000000000006124fee993bc0000c0",
+      "expected": {
+        "intent": "Increase allowance",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Spender",
+            "value": "0xDdC796a66E8b83d0BcCD97dF33A6CcFBA8fd60eA"
+          },
+          {
+            "label": "Amount",
+            "value": "7 stLINK"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Decrease stLINK allowance by 3",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a8094b8b295df2cd735b15be5eb419517aa626fc43cd580b844a457c2d7000000000000000000000000ddc796a66e8b83d0bccd97df33a6ccfba8fd60ea00000000000000000000000000000000000000000000000029a2241af62c0000c0",
+      "expected": {
+        "intent": "Decrease allowance",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Spender",
+            "value": "0xDdC796a66E8b83d0BcCD97dF33A6CcFBA8fd60eA"
+          },
+          {
+            "label": "Amount",
+            "value": "3 stLINK"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Send 4 stLINK from account",
+      "rawTx": "0x02f88e0107843b9aca008506fc23ac0083061a8094b8b295df2cd735b15be5eb419517aa626fc43cd580b86423b872dd000000000000000000000000ddc796a66e8b83d0bccd97df33a6ccfba8fd60ea00000000000000000000000020c0b7b370c97ed139aea464205c05fceaf4ac680000000000000000000000000000000000000000000000003782dace9d900000c0",
+      "expected": {
+        "intent": "Send from account",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "From",
+            "value": "0xDdC796a66E8b83d0BcCD97dF33A6CcFBA8fd60eA"
+          },
+          {
+            "label": "To",
+            "value": "0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+          },
+          {
+            "label": "Amount",
+            "value": "4 stLINK"
+          }
+        ],
+        "interpolatedIntent": "Send 4 stLINK from 0xDdC796a66E8b83d0BcCD97dF33A6CcFBA8fd60eA to 0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+      }
+    },
+    {
+      "description": "Burn 1 stLINK",
+      "rawTx": "0x02f84d0107843b9aca008506fc23ac0083061a8094b8b295df2cd735b15be5eb419517aa626fc43cd580a442966c680000000000000000000000000000000000000000000000000de0b6b3a7640000c0",
+      "expected": {
+        "intent": "Burn staked tokens",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "1 stLINK"
+          }
+        ],
+        "interpolatedIntent": "Burn 1 stLINK"
+      }
+    }
+  ]
+}

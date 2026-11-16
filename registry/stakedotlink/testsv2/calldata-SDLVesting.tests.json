@@ -1,0 +1,69 @@
+{
+  "$schema": "../../../specs/erc7730-tests-v2.schema.json",
+  "descriptor": "../calldata-SDLVesting.json",
+  "dataProvider": {
+    "tokens": {}
+  },
+  "tests": [
+    {
+      "description": "Withdraw vested SDL",
+      "rawTx": "0x02ed0107843b9aca008506fc23ac0083061a8094e22ee628e3aa38133bdd01159057767e1a93081a808486d1a69fc0",
+      "expected": {
+        "intent": "Withdraw vested SDL",
+        "owner": "stake.link",
+        "fields": []
+      }
+    },
+    {
+      "description": "Lock vested SDL as reSDL",
+      "rawTx": "0x02ed0107843b9aca008506fc23ac0083061a8094e22ee628e3aa38133bdd01159057767e1a93081a808467ee32eec0",
+      "expected": {
+        "intent": "Lock vested SDL as reSDL",
+        "owner": "stake.link",
+        "fields": []
+      }
+    },
+    {
+      "description": "Claim stLINK rewards of the vested reSDL",
+      "rawTx": "0x02f88e0107843b9aca008506fc23ac0083061a8094e22ee628e3aa38133bdd01159057767e1a93081a80b864a911628400000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000001000000000000000000000000b8b295df2cd735b15be5eb419517aa626fc43cd5c0",
+      "expected": {
+        "intent": "Claim vesting reSDL rewards",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Reward token",
+            "value": "0xb8b295df2cd735b15BE5Eb419517Aa626fc43cD5"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Take the 4-year reSDL position out of vesting",
+      "rawTx": "0x02f88e0107843b9aca008506fc23ac0083061a8094e22ee628e3aa38133bdd01159057767e1a93081a80b864cb0e2262000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000004c0",
+      "expected": {
+        "intent": "Take reSDL out of vesting",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Lock time",
+            "value": "4y"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Set the lock time to 2 years",
+      "rawTx": "0x02f84d0107843b9aca008506fc23ac0083061a8094e22ee628e3aa38133bdd01159057767e1a93081a80a4367544150000000000000000000000000000000000000000000000000000000000000002c0",
+      "expected": {
+        "intent": "Set vesting lock time",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Lock time",
+            "value": "2y"
+          }
+        ]
+      }
+    }
+  ]
+}
