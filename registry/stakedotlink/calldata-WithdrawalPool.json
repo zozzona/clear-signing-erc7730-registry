@@ -1,0 +1,49 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "$id": "WithdrawalPool",
+    "contract": {
+      "deployments": [
+        {
+          "chainId": 1,
+          "address": "0xa60B5146E44ff755e32BD51532842ceB41D0C248"
+        },
+        {
+          "chainId": 1,
+          "address": "0xbfbF47b2a3B9e54A44257bf57d4b078170096458"
+        },
+        {
+          "chainId": 1,
+          "address": "0x908B892276fb70fB6FD362FF97D58E7abF6d3690"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "owner": "stake.link",
+    "info": {
+      "url": "https://stake.link"
+    },
+    "contractName": "WithdrawalPool"
+  },
+  "display": {
+    "formats": {
+      "withdraw(uint256[] _withdrawalIds, uint256[] _batchIds)": {
+        "intent": "Claim finalized withdrawals",
+        "fields": [
+          {
+            "path": "#._withdrawalIds.[]",
+            "label": "Withdrawal ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#._batchIds.[]",
+            "label": "Batch ID",
+            "visible": "never"
+          }
+        ]
+      }
+    }
+  }
+}

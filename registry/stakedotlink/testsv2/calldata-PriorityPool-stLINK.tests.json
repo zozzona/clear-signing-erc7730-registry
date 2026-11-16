@@ -1,0 +1,86 @@
+{
+  "$schema": "../../../specs/erc7730-tests-v2.schema.json",
+  "descriptor": "../calldata-PriorityPool-stLINK.json",
+  "dataProvider": {
+    "tokens": {
+      "0x514910771af9ca656af840dff83e8264ecf986ca": {
+        "symbol": "LINK",
+        "decimals": 18,
+        "name": "ChainLink Token"
+      },
+      "0xb8b295df2cd735b15be5eb419517aa626fc43cd5": {
+        "symbol": "stLINK",
+        "decimals": 18,
+        "name": "Staked LINK"
+      }
+    }
+  },
+  "tests": [
+    {
+      "description": "Stake 250 LINK, queue if full",
+      "rawTx": "0x02f8ae0107843b9aca008506fc23ac0083061a8094ddc796a66e8b83d0bccd97df33a6ccfba8fd60ea80b884654e5b1300000000000000000000000000000000000000000000000d8d726b7177a80000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000c0",
+      "expected": {
+        "intent": "Stake LINK",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "250 LINK"
+          },
+          {
+            "label": "Queue if pool is full",
+            "value": "Yes"
+          }
+        ],
+        "interpolatedIntent": "Stake 250 LINK"
+      }
+    },
+    {
+      "description": "Withdraw 100 LINK, queue the rest",
+      "rawTx": "0x02f9014f0107843b9aca008506fc23ac0083061a8094ddc796a66e8b83d0bccd97df33a6ccfba8fd60ea80b90124314b28aa0000000000000000000000000000000000000000000000056bc75e2d631000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c0",
+      "expected": {
+        "intent": "Withdraw LINK",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "100 LINK"
+          },
+          {
+            "label": "Use queued LINK first",
+            "value": "No"
+          },
+          {
+            "label": "Queue if not instant",
+            "value": "Yes"
+          }
+        ],
+        "interpolatedIntent": "Withdraw 100 LINK"
+      }
+    },
+    {
+      "description": "Withdraw 40 queued LINK",
+      "rawTx": "0x02f8ee0107843b9aca008506fc23ac0083061a8094ddc796a66e8b83d0bccd97df33a6ccfba8fd60ea80b8c4deb15ecb0000000000000000000000000000000000000000000000022b1c8c1227a0000000000000000000000000000000000000000000000000000340aad21b3b700000000000000000000000000000000000000000000000000002fb474098f67c0000000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000011111111111111111111111111111111111111111111111111111111111111111c0",
+      "expected": {
+        "intent": "Withdraw queued LINK",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "40 LINK"
+          }
+        ],
+        "interpolatedIntent": "Withdraw 40 LINK from the queue"
+      }
+    },
+    {
+      "description": "Claim stLINK received for queued LINK",
+      "rawTx": "0x02f8ce0107843b9aca008506fc23ac0083061a8094ddc796a66e8b83d0bccd97df33a6ccfba8fd60ea80b8a45d4e6fb900000000000000000000000000000000000000000000000340aad21b3b700000000000000000000000000000000000000000000000000002fb474098f67c0000000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000011111111111111111111111111111111111111111111111111111111111111111c0",
+      "expected": {
+        "intent": "Claim stLINK from queue",
+        "owner": "stake.link",
+        "fields": []
+      }
+    }
+  ]
+}

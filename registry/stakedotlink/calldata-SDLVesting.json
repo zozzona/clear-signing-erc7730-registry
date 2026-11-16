@@ -1,0 +1,133 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "$id": "SDLVesting",
+    "contract": {
+      "deployments": [
+        {
+          "chainId": 1,
+          "address": "0xe22Ee628E3aA38133BDd01159057767e1A93081A"
+        },
+        {
+          "chainId": 1,
+          "address": "0x506c02763131F044B1c08AB9D4Dd5Dc5505ee9c7"
+        },
+        {
+          "chainId": 1,
+          "address": "0x02A0f6242c43A3cB59e58D5fa7ACd9e79BBa3abA"
+        },
+        {
+          "chainId": 1,
+          "address": "0x8Aaf17a93eecE176de3e1BEec7C775c9d4C9f7d5"
+        },
+        {
+          "chainId": 1,
+          "address": "0x5eb140f59E59dAd692e13B8480C2F91758c341e5"
+        },
+        {
+          "chainId": 1,
+          "address": "0x8b5256ae4A572b6ceDbee9F93b60D2171aBecfE3"
+        },
+        {
+          "chainId": 1,
+          "address": "0x6185a7f5344Ff0C320E25CA1ED6526c4692FcB3D"
+        },
+        {
+          "chainId": 1,
+          "address": "0x4cCB44bF85adE035C5B57e38eDd385788c119c86"
+        },
+        {
+          "chainId": 1,
+          "address": "0xe05EDf1d3e73dDb87ebaa1fa9363eFdDbb0252a6"
+        },
+        {
+          "chainId": 1,
+          "address": "0xf509c90Fbb166EdBc06BCd3Caa75F926842e3032"
+        },
+        {
+          "chainId": 1,
+          "address": "0x8B5194fE64A2eE36f34089566B23DF357f61024f"
+        },
+        {
+          "chainId": 1,
+          "address": "0x03c1C19adB2009895422Ead742A5E96A08b1fF94"
+        },
+        {
+          "chainId": 1,
+          "address": "0x08c1d70FF981FE2ff78194c973191Bbc8226A8b9"
+        },
+        {
+          "chainId": 1,
+          "address": "0xb03697a0C4c86AEf1A2F73D157dCe101bFcfd1d4"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "owner": "stake.link",
+    "info": {
+      "url": "https://stake.link"
+    },
+    "contractName": "SDLVesting"
+  },
+  "display": {
+    "formats": {
+      "release()": {
+        "intent": "Withdraw vested SDL",
+        "fields": []
+      },
+      "stakeReleasableTokens()": {
+        "intent": "Lock vested SDL as reSDL",
+        "fields": []
+      },
+      "claimRESDLRewards(address[] _tokens)": {
+        "intent": "Claim vesting reSDL rewards",
+        "fields": [
+          {
+            "path": "#._tokens.[]",
+            "label": "Reward token",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "withdrawRESDLPositions(uint256[] _lockTimes)": {
+        "intent": "Take reSDL out of vesting",
+        "fields": [
+          {
+            "path": "#._lockTimes.[]",
+            "label": "Lock time",
+            "format": "unit",
+            "params": {
+              "base": "y"
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "setLockTime(uint64 _lockTime)": {
+        "intent": "Set vesting lock time",
+        "fields": [
+          {
+            "path": "#._lockTime",
+            "label": "Lock time",
+            "format": "unit",
+            "params": {
+              "base": "y"
+            },
+            "visible": "always"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,271 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "$id": "wstESP",
+    "contract": {
+      "deployments": [
+        {
+          "chainId": 1,
+          "address": "0x43ff5fFaB0973815EF8672F71c49ee5e53f30a48"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "owner": "stake.link",
+    "info": {
+      "url": "https://stake.link"
+    },
+    "constants": {
+      "underlying": "0x5273a75694311A6c4F2AcF5C5B8566D965cb6e50"
+    },
+    "contractName": "WrappedSDToken"
+  },
+  "display": {
+    "formats": {
+      "wrap(uint256 _amount)": {
+        "intent": "Wrap stESP",
+        "interpolatedIntent": "Wrap {_amount}",
+        "fields": [
+          {
+            "path": "#._amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "token": "$.metadata.constants.underlying"
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "unwrap(uint256 _amount)": {
+        "intent": "Unwrap wstESP to stESP",
+        "interpolatedIntent": "Unwrap {_amount}",
+        "fields": [
+          {
+            "path": "#._amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "@.to"
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "transfer(address to, uint256 amount)": {
+        "intent": "Send wstESP",
+        "interpolatedIntent": "Send {amount} to {to}",
+        "fields": [
+          {
+            "path": "#.amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "@.to"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.to",
+            "label": "To",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "approve(address spender, uint256 amount)": {
+        "intent": "Approve wstESP spending",
+        "interpolatedIntent": "Allow {spender} to spend {amount}",
+        "fields": [
+          {
+            "path": "#.spender",
+            "label": "Spender",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract",
+                "eoa"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "@.to",
+              "threshold": "0x8000000000000000000000000000000000000000000000000000000000000000",
+              "message": "Unlimited"
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "increaseAllowance(address spender, uint256 addedValue)": {
+        "intent": "Increase wstESP allowance",
+        "fields": [
+          {
+            "path": "#.spender",
+            "label": "Spender",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract",
+                "eoa"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.addedValue",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "@.to",
+              "threshold": "0x8000000000000000000000000000000000000000000000000000000000000000",
+              "message": "Unlimited"
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "decreaseAllowance(address spender, uint256 subtractedValue)": {
+        "intent": "Decrease wstESP allowance",
+        "fields": [
+          {
+            "path": "#.spender",
+            "label": "Spender",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract",
+                "eoa"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.subtractedValue",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "@.to"
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "transferFrom(address from, address to, uint256 amount)": {
+        "intent": "Send wstESP from account",
+        "interpolatedIntent": "Send {amount} from {from} to {to}",
+        "fields": [
+          {
+            "path": "#.from",
+            "label": "From",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.to",
+            "label": "To",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "wallet",
+                "contract"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "@.to"
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "transferAndCall(address _to, uint256 _value, bytes _data)": {
+        "intent": "Send wstESP and call contract",
+        "interpolatedIntent": "Send {_value} and call {_to}",
+        "fields": [
+          {
+            "path": "#._value",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "@.to"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._to",
+            "label": "To",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract",
+                "eoa"
+              ],
+              "sources": [
+                "local",
+                "ens"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._data",
+            "label": "Data",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      }
+    }
+  }
+}

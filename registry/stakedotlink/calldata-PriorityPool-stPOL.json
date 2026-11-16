@@ -1,0 +1,167 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "$id": "POLPriorityPool",
+    "contract": {
+      "deployments": [
+        {
+          "chainId": 1,
+          "address": "0xCfa197495CF8E82D7B5df858F55B73208B8B9d67"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "owner": "stake.link",
+    "info": {
+      "url": "https://stake.link"
+    },
+    "enums": {
+      "yesNo": {
+        "true": "Yes",
+        "false": "No"
+      }
+    },
+    "constants": {
+      "asset": "0x455e53CBB86018Ac2B8092FdCd39d8444aFFC3F6",
+      "lst": "0x2ff4390dB61F282Ef4E6D4612c776b809a541753"
+    },
+    "contractName": "PriorityPool"
+  },
+  "display": {
+    "formats": {
+      "deposit(uint256 _amount, bool _shouldQueue, bytes[] _data)": {
+        "intent": "Stake POL",
+        "interpolatedIntent": "Stake {_amount}",
+        "fields": [
+          {
+            "path": "#._amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "token": "$.metadata.constants.asset"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._shouldQueue",
+            "label": "Queue if pool is full",
+            "format": "enum",
+            "params": {
+              "$ref": "$.metadata.enums.yesNo"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._data.[]",
+            "label": "Strategy data",
+            "visible": "never"
+          }
+        ]
+      },
+      "withdraw(uint256 _amountToWithdraw, uint256 _amount, uint256 _sharesAmount, bytes32[] _merkleProof, bool _shouldUnqueue, bool _shouldQueueWithdrawal, bytes[] _data)": {
+        "intent": "Withdraw POL",
+        "interpolatedIntent": "Withdraw {_amountToWithdraw}",
+        "fields": [
+          {
+            "path": "#._amountToWithdraw",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "token": "$.metadata.constants.asset"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._shouldUnqueue",
+            "label": "Use queued POL first",
+            "format": "enum",
+            "params": {
+              "$ref": "$.metadata.enums.yesNo"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._shouldQueueWithdrawal",
+            "label": "Queue if not instant",
+            "format": "enum",
+            "params": {
+              "$ref": "$.metadata.enums.yesNo"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._amount",
+            "label": "Distribution amount",
+            "visible": "never"
+          },
+          {
+            "path": "#._sharesAmount",
+            "label": "Distribution shares",
+            "visible": "never"
+          },
+          {
+            "path": "#._merkleProof.[]",
+            "label": "Merkle proof",
+            "visible": "never"
+          },
+          {
+            "path": "#._data.[]",
+            "label": "Strategy data",
+            "visible": "never"
+          }
+        ]
+      },
+      "unqueueTokens(uint256 _amountToUnqueue, uint256 _amount, uint256 _sharesAmount, bytes32[] _merkleProof)": {
+        "intent": "Withdraw queued POL",
+        "interpolatedIntent": "Withdraw {_amountToUnqueue} from the queue",
+        "fields": [
+          {
+            "path": "#._amountToUnqueue",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "token": "$.metadata.constants.asset"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#._amount",
+            "label": "Distribution amount",
+            "visible": "never"
+          },
+          {
+            "path": "#._sharesAmount",
+            "label": "Distribution shares",
+            "visible": "never"
+          },
+          {
+            "path": "#._merkleProof.[]",
+            "label": "Merkle proof",
+            "visible": "never"
+          }
+        ]
+      },
+      "claimLSDTokens(uint256 _amount, uint256 _sharesAmount, bytes32[] _merkleProof)": {
+        "intent": "Claim stPOL from queue",
+        "fields": [
+          {
+            "path": "#._amount",
+            "label": "Distribution amount",
+            "visible": "never"
+          },
+          {
+            "path": "#._sharesAmount",
+            "label": "Distribution shares",
+            "visible": "never"
+          },
+          {
+            "path": "#._merkleProof.[]",
+            "label": "Merkle proof",
+            "visible": "never"
+          }
+        ]
+      }
+    }
+  }
+}

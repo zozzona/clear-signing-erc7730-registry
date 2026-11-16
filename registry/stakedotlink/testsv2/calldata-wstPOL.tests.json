@@ -1,0 +1,189 @@
+{
+  "$schema": "../../../specs/erc7730-tests-v2.schema.json",
+  "descriptor": "../calldata-wstPOL.json",
+  "dataProvider": {
+    "tokens": {
+      "0x2ff4390db61f282ef4e6d4612c776b809a541753": {
+        "symbol": "stPOL",
+        "decimals": 18,
+        "name": "Staked POL"
+      },
+      "0x2091d83592d79b4de5fd2ce3d98679c32a9555e6": {
+        "symbol": "wstPOL",
+        "decimals": 18,
+        "name": "Wrapped stPOL"
+      }
+    }
+  },
+  "tests": [
+    {
+      "description": "Wrap 10 stPOL",
+      "rawTx": "0x02f84d0107843b9aca008506fc23ac0083061a80942091d83592d79b4de5fd2ce3d98679c32a9555e680a4ea598cb00000000000000000000000000000000000000000000000008ac7230489e80000c0",
+      "expected": {
+        "intent": "Wrap stPOL",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "10 stPOL"
+          }
+        ],
+        "interpolatedIntent": "Wrap 10 stPOL"
+      }
+    },
+    {
+      "description": "Unwrap 8 wstPOL",
+      "rawTx": "0x02f84d0107843b9aca008506fc23ac0083061a80942091d83592d79b4de5fd2ce3d98679c32a9555e680a4de0e9a3e0000000000000000000000000000000000000000000000006f05b59d3b200000c0",
+      "expected": {
+        "intent": "Unwrap wstPOL to stPOL",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "8 wstPOL"
+          }
+        ],
+        "interpolatedIntent": "Unwrap 8 wstPOL"
+      }
+    },
+    {
+      "description": "Send 3 wstPOL and call a contract",
+      "rawTx": "0x02f8ae0107843b9aca008506fc23ac0083061a80942091d83592d79b4de5fd2ce3d98679c32a9555e680b8844000aea000000000000000000000000020c0b7b370c97ed139aea464205c05fceaf4ac6800000000000000000000000000000000000000000000000029a2241af62c000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000c0",
+      "expected": {
+        "intent": "Send wstPOL and call contract",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "3 wstPOL"
+          },
+          {
+            "label": "To",
+            "value": "0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+          },
+          {
+            "label": "Data",
+            "value": "0x"
+          }
+        ],
+        "interpolatedIntent": "Send 3 wstPOL and call 0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+      }
+    },
+    {
+      "description": "Send 5 wstPOL",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a80942091d83592d79b4de5fd2ce3d98679c32a9555e680b844a9059cbb00000000000000000000000020c0b7b370c97ed139aea464205c05fceaf4ac680000000000000000000000000000000000000000000000004563918244f40000c0",
+      "expected": {
+        "intent": "Send wstPOL",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "5 wstPOL"
+          },
+          {
+            "label": "To",
+            "value": "0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+          }
+        ],
+        "interpolatedIntent": "Send 5 wstPOL to 0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+      }
+    },
+    {
+      "description": "Approve 100 wstPOL",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a80942091d83592d79b4de5fd2ce3d98679c32a9555e680b844095ea7b3000000000000000000000000cfa197495cf8e82d7b5df858f55b73208b8b9d670000000000000000000000000000000000000000000000056bc75e2d63100000c0",
+      "expected": {
+        "intent": "Approve wstPOL spending",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Spender",
+            "value": "0xCfa197495CF8E82D7B5df858F55B73208B8B9d67"
+          },
+          {
+            "label": "Amount",
+            "value": "100 wstPOL"
+          }
+        ],
+        "interpolatedIntent": "Allow 0xCfa197495CF8E82D7B5df858F55B73208B8B9d67 to spend 100 wstPOL"
+      }
+    },
+    {
+      "description": "Approve unlimited wstPOL",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a80942091d83592d79b4de5fd2ce3d98679c32a9555e680b844095ea7b3000000000000000000000000cfa197495cf8e82d7b5df858f55b73208b8b9d67ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc0",
+      "expected": {
+        "intent": "Approve wstPOL spending",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Spender",
+            "value": "0xCfa197495CF8E82D7B5df858F55B73208B8B9d67"
+          },
+          {
+            "label": "Amount",
+            "value": "Unlimited wstPOL"
+          }
+        ],
+        "interpolatedIntent": "Allow 0xCfa197495CF8E82D7B5df858F55B73208B8B9d67 to spend Unlimited wstPOL"
+      }
+    },
+    {
+      "description": "Increase wstPOL allowance by 7",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a80942091d83592d79b4de5fd2ce3d98679c32a9555e680b84439509351000000000000000000000000cfa197495cf8e82d7b5df858f55b73208b8b9d670000000000000000000000000000000000000000000000006124fee993bc0000c0",
+      "expected": {
+        "intent": "Increase wstPOL allowance",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Spender",
+            "value": "0xCfa197495CF8E82D7B5df858F55B73208B8B9d67"
+          },
+          {
+            "label": "Amount",
+            "value": "7 wstPOL"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Decrease wstPOL allowance by 3",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a80942091d83592d79b4de5fd2ce3d98679c32a9555e680b844a457c2d7000000000000000000000000cfa197495cf8e82d7b5df858f55b73208b8b9d6700000000000000000000000000000000000000000000000029a2241af62c0000c0",
+      "expected": {
+        "intent": "Decrease wstPOL allowance",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Spender",
+            "value": "0xCfa197495CF8E82D7B5df858F55B73208B8B9d67"
+          },
+          {
+            "label": "Amount",
+            "value": "3 wstPOL"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Send 4 wstPOL from account",
+      "rawTx": "0x02f88e0107843b9aca008506fc23ac0083061a80942091d83592d79b4de5fd2ce3d98679c32a9555e680b86423b872dd000000000000000000000000cfa197495cf8e82d7b5df858f55b73208b8b9d6700000000000000000000000020c0b7b370c97ed139aea464205c05fceaf4ac680000000000000000000000000000000000000000000000003782dace9d900000c0",
+      "expected": {
+        "intent": "Send wstPOL from account",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "From",
+            "value": "0xCfa197495CF8E82D7B5df858F55B73208B8B9d67"
+          },
+          {
+            "label": "To",
+            "value": "0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+          },
+          {
+            "label": "Amount",
+            "value": "4 wstPOL"
+          }
+        ],
+        "interpolatedIntent": "Send 4 wstPOL from 0xCfa197495CF8E82D7B5df858F55B73208B8B9d67 to 0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+      }
+    }
+  ]
+}

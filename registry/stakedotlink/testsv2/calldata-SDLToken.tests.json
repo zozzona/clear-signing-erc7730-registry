@@ -1,0 +1,169 @@
+{
+  "$schema": "../../../specs/erc7730-tests-v2.schema.json",
+  "descriptor": "../calldata-SDLToken.json",
+  "dataProvider": {
+    "tokens": {
+      "0xa95c5ebb86e0de73b4fb8c47a45b792cfea28c23": {
+        "symbol": "SDL",
+        "decimals": 18,
+        "name": "stake.link"
+      }
+    }
+  },
+  "tests": [
+    {
+      "description": "Lock 1,000 SDL as a new reSDL position for 4 years",
+      "rawTx": "0x02f8ee0107843b9aca008506fc23ac0083061a8094a95c5ebb86e0de73b4fb8c47a45b792cfea28c2380b8c44000aea00000000000000000000000000b2ef910ad0b34bf575eb09d37fd7da6c148ca4d00000000000000000000000000000000000000000000003635c9adc5dea00000000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000784ce00c0",
+      "expected": {
+        "intent": "Send SDL and call contract",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "1000 SDL"
+          },
+          {
+            "label": "To",
+            "value": "0x0B2eF910ad0b34bf575Eb09d37fd7DA6c148CA4d"
+          },
+          {
+            "label": "Data",
+            "value": "0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000784ce00"
+          }
+        ],
+        "interpolatedIntent": "Send 1000 SDL and call 0x0B2eF910ad0b34bf575Eb09d37fd7DA6c148CA4d"
+      }
+    },
+    {
+      "description": "Burn 1 SDL",
+      "rawTx": "0x02f84d0107843b9aca008506fc23ac0083061a8094a95c5ebb86e0de73b4fb8c47a45b792cfea28c2380a442966c680000000000000000000000000000000000000000000000000de0b6b3a7640000c0",
+      "expected": {
+        "intent": "Burn SDL",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "1 SDL"
+          }
+        ],
+        "interpolatedIntent": "Burn 1 SDL"
+      }
+    },
+    {
+      "description": "Send 5 SDL",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a8094a95c5ebb86e0de73b4fb8c47a45b792cfea28c2380b844a9059cbb00000000000000000000000020c0b7b370c97ed139aea464205c05fceaf4ac680000000000000000000000000000000000000000000000004563918244f40000c0",
+      "expected": {
+        "intent": "Send SDL",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Amount",
+            "value": "5 SDL"
+          },
+          {
+            "label": "To",
+            "value": "0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+          }
+        ],
+        "interpolatedIntent": "Send 5 SDL to 0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+      }
+    },
+    {
+      "description": "Approve 100 SDL",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a8094a95c5ebb86e0de73b4fb8c47a45b792cfea28c2380b844095ea7b30000000000000000000000000b2ef910ad0b34bf575eb09d37fd7da6c148ca4d0000000000000000000000000000000000000000000000056bc75e2d63100000c0",
+      "expected": {
+        "intent": "Approve SDL spending",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Spender",
+            "value": "0x0B2eF910ad0b34bf575Eb09d37fd7DA6c148CA4d"
+          },
+          {
+            "label": "Amount",
+            "value": "100 SDL"
+          }
+        ],
+        "interpolatedIntent": "Allow 0x0B2eF910ad0b34bf575Eb09d37fd7DA6c148CA4d to spend 100 SDL"
+      }
+    },
+    {
+      "description": "Approve unlimited SDL",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a8094a95c5ebb86e0de73b4fb8c47a45b792cfea28c2380b844095ea7b30000000000000000000000000b2ef910ad0b34bf575eb09d37fd7da6c148ca4dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc0",
+      "expected": {
+        "intent": "Approve SDL spending",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Spender",
+            "value": "0x0B2eF910ad0b34bf575Eb09d37fd7DA6c148CA4d"
+          },
+          {
+            "label": "Amount",
+            "value": "Unlimited SDL"
+          }
+        ],
+        "interpolatedIntent": "Allow 0x0B2eF910ad0b34bf575Eb09d37fd7DA6c148CA4d to spend Unlimited SDL"
+      }
+    },
+    {
+      "description": "Increase SDL allowance by 7",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a8094a95c5ebb86e0de73b4fb8c47a45b792cfea28c2380b844395093510000000000000000000000000b2ef910ad0b34bf575eb09d37fd7da6c148ca4d0000000000000000000000000000000000000000000000006124fee993bc0000c0",
+      "expected": {
+        "intent": "Increase SDL allowance",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Spender",
+            "value": "0x0B2eF910ad0b34bf575Eb09d37fd7DA6c148CA4d"
+          },
+          {
+            "label": "Amount",
+            "value": "7 SDL"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Decrease SDL allowance by 3",
+      "rawTx": "0x02f86e0107843b9aca008506fc23ac0083061a8094a95c5ebb86e0de73b4fb8c47a45b792cfea28c2380b844a457c2d70000000000000000000000000b2ef910ad0b34bf575eb09d37fd7da6c148ca4d00000000000000000000000000000000000000000000000029a2241af62c0000c0",
+      "expected": {
+        "intent": "Decrease SDL allowance",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "Spender",
+            "value": "0x0B2eF910ad0b34bf575Eb09d37fd7DA6c148CA4d"
+          },
+          {
+            "label": "Amount",
+            "value": "3 SDL"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Send 4 SDL from account",
+      "rawTx": "0x02f88e0107843b9aca008506fc23ac0083061a8094a95c5ebb86e0de73b4fb8c47a45b792cfea28c2380b86423b872dd0000000000000000000000000b2ef910ad0b34bf575eb09d37fd7da6c148ca4d00000000000000000000000020c0b7b370c97ed139aea464205c05fceaf4ac680000000000000000000000000000000000000000000000003782dace9d900000c0",
+      "expected": {
+        "intent": "Send SDL from account",
+        "owner": "stake.link",
+        "fields": [
+          {
+            "label": "From",
+            "value": "0x0B2eF910ad0b34bf575Eb09d37fd7DA6c148CA4d"
+          },
+          {
+            "label": "To",
+            "value": "0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+          },
+          {
+            "label": "Amount",
+            "value": "4 SDL"
+          }
+        ],
+        "interpolatedIntent": "Send 4 SDL from 0x0B2eF910ad0b34bf575Eb09d37fd7DA6c148CA4d to 0x20C0B7b370c97ed139aeA464205c05fCeAF4ac68"
+      }
+    }
+  ]
+}
